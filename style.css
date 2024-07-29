@@ -463,11 +463,12 @@ h1 {
 }
 .pres-gauche h3 {
     text-align: center;
-    font-size: 25px;
+    font-size: 22px;
+    margin-bottom: 20px;
     letter-spacing: 2px;
 }
 .pres-gauche hr {
-    width: 60px;
+    width: 300px;
     margin: 0 auto 20px auto;
 }
 .pres-gauche p {
