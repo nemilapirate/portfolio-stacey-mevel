@@ -411,7 +411,7 @@
                     <input type="submit" value="ENVOYER" class="button-sub">
                 </div>
             </form>
-
+            
             <!-- Messages de retour -->
             <div id="message-success" style="display: none; color: rgb(37, 182, 141); text-align: center; font-size: 30px;">
                 Votre message a été envoyé avec succès !
@@ -429,36 +429,30 @@
     <!-- Incluez EmailJS -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script>
-        // Initialisation d'EmailJS
-        emailjs.init("yRDWJyZMWh_1b1EgF");
+        emailjs.init("yRDWJyZMWh_1b1EgF"); // Initialisation avec votre Public Key
 
-        // Gestion de la soumission du formulaire
         document.getElementById('contact-form').addEventListener('submit', function(event) {
             event.preventDefault();
 
-            // Récupération du formulaire
             var form = event.target;
 
             // Masquer le formulaire
             form.style.display = 'none';
             
-            // Afficher les messages de retour
-            var messageSuccess = document.getElementById('message-success');
-            var messageError = document.getElementById('message-error');
-
-            emailjs.sendForm('lw8321j', '7065qeg', form)
-                .then(function(response) {
-                    // Affichage du message de succès
-                    messageSuccess.style.display = 'block';
-                    messageError.style.display = 'none';
-                }, function(error) {
-                    // Affichage du message d'erreur
-                    messageError.style.display = 'block';
-                    messageSuccess.style.display = 'none';
-                    console.error('Erreur EmailJS:', error);
-                });
-        });
-    </script>
+            emailjs.sendForm('service_lw8321j', 'template_7056qeg', form)
+            .then(function(response) {
+                // Affichage du message de succès
+                document.getElementById('message-success').style.display = 'block';
+                document.getElementById('message-error').style.display = 'none';
+                form.reset(); // Réinitialiser le formulaire après l'envoi
+            }, function(error) {
+                // Affichage du message d'erreur
+                document.getElementById('message-error').style.display = 'block';
+                document.getElementById('message-success').style.display = 'none';
+                console.error('Erreur EmailJS:', error);
+            });
+    });
+</script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/animation.gsap.min.js"></script>
